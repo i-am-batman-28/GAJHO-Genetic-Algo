@@ -81,7 +81,7 @@ export function countDuplicates(population: Chromosome[]): number {
     if (seen.has(key)) {
       duplicateCount++;
     } else {
-      seen.set(key, true);
+      seen.add(key);
     }
   }
   
