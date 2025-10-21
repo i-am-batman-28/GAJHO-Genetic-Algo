@@ -18,7 +18,6 @@ interface ParameterTuningProps {
 interface Preset {
   name: string;
   description: string;
-
   params: AlgorithmParams;
 }
 
@@ -47,7 +46,6 @@ const PRESETS: Preset[] = [
   {
     name: 'Balanced',
     description: 'Good all-around performance',
-  
     params: {
       populationSize: 100,
       maxGenerations: 100,
@@ -130,7 +128,6 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
               onClick={() => applyPreset(preset)}
               disabled={disabled}
             >
-              <div className="preset-icon">{preset.icon}</div>
               <div className="preset-name">{preset.name}</div>
               <div className="preset-desc">{preset.description}</div>
             </button>
