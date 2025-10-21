@@ -60,12 +60,12 @@ export function PerformanceCharts({ history }: PerformanceChartsProps) {
             <span className="chart-icon">🎯</span>
             <h3>Distance Convergence</h3>
           </div>
-          <ResponsiveContainer width="100%" height={250}>
-            <LineChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={chartData} margin={{ top: 25, right: 20, left: 0, bottom: 35 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis 
                 dataKey="generation" 
-                label={{ value: 'Generation', position: 'insideBottom', offset: -5 }}
+                label={{ value: 'Generation', position: 'insideBottom', offset: -8}}
                 stroke="#6b7280"
               />
               <YAxis 
@@ -80,7 +80,7 @@ export function PerformanceCharts({ history }: PerformanceChartsProps) {
                   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                 }}
               />
-              <Legend />
+              <Legend verticalAlign="bottom" wrapperStyle={{ paddingTop: '12px' }} />
               <Line 
                 type="monotone" 
                 dataKey="best" 
@@ -120,12 +120,12 @@ export function PerformanceCharts({ history }: PerformanceChartsProps) {
             <span className="chart-icon">🧬</span>
             <h3>Population Diversity</h3>
           </div>
-          <ResponsiveContainer width="100%" height={250}>
-            <LineChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={chartData} margin={{ top: 25, right: 20, left: 0, bottom: 35 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis 
                 dataKey="generation" 
-                label={{ value: 'Generation', position: 'insideBottom', offset: -5 }}
+                label={{ value: 'Generation', position: 'insideBottom', offset: -8 }}
                 stroke="#6b7280"
               />
               <YAxis 
@@ -141,7 +141,11 @@ export function PerformanceCharts({ history }: PerformanceChartsProps) {
                   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                 }}
               />
-              <Legend />
+              <Legend 
+                verticalAlign="bottom" 
+                align="center" 
+                wrapperStyle={{ paddingTop: '12px', textAlign: 'center' }} 
+              />
               <Line 
                 type="monotone" 
                 dataKey="diversity" 

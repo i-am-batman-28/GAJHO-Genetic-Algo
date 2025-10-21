@@ -9,6 +9,7 @@ import { StandardGA } from '../algorithms/StandardGA';
 import { GAJGHO } from '../algorithms/GAJGHO';
 import { ABCTSP } from '../algorithms/ABCTSP';
 import { PACO3Opt } from '../algorithms/PACO3Opt';
+import { ExportImport } from './ExportImport';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './AlgorithmComparison.css';
 
@@ -348,6 +349,15 @@ export function MultiAlgorithmComparison({ cities, params, onClose }: MultiAlgor
                   </LineChart>
                 </ResponsiveContainer>
               </div>
+
+              {/* Export/Import Section */}
+              <ExportImport
+                algorithms={algorithms}
+                params={params}
+                datasetName={cities.length > 0 ? `${cities.length}-cities` : 'Custom'}
+                datasetSize={cities.length}
+                totalGenerations={params.maxGenerations}
+              />
             </>
           )}
 

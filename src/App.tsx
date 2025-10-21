@@ -294,7 +294,7 @@ function App() {
       <footer className="footer">
         <div className="footer-content">
           <div className="about-section">
-            <h3>📚 About GA-JGHO Algorithm</h3>
+            <h3> About GA-JGHO Algorithm</h3>
             <p className="about-text">
               Implementation of "A genetic algorithm with jumping gene and heuristic operators for traveling salesman problem" 
               (Zhang et al., Applied Soft Computing, 2022)

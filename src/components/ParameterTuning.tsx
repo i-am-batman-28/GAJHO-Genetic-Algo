@@ -18,7 +18,7 @@ interface ParameterTuningProps {
 interface Preset {
   name: string;
   description: string;
-  icon: string;
+
   params: AlgorithmParams;
 }
 
@@ -26,13 +26,11 @@ const PRESETS: Preset[] = [
   {
     name: 'Paper Optimal',
     description: 'Optimized values from research paper',
-    icon: '📄',
     params: DEFAULT_PARAMS
   },
   {
     name: 'Aggressive',
     description: 'Fast exploration, high diversity',
-    icon: '🔥',
     params: {
       populationSize: 150,
       maxGenerations: 80,
@@ -49,7 +47,7 @@ const PRESETS: Preset[] = [
   {
     name: 'Balanced',
     description: 'Good all-around performance',
-    icon: '⚖️',
+  
     params: {
       populationSize: 100,
       maxGenerations: 100,
@@ -66,7 +64,6 @@ const PRESETS: Preset[] = [
   {
     name: 'Conservative',
     description: 'Slow, thorough exploitation',
-    icon: '🐢',
     params: {
       populationSize: 80,
       maxGenerations: 150,
@@ -83,7 +80,6 @@ const PRESETS: Preset[] = [
   {
     name: 'Large Scale',
     description: 'Optimized for 200+ cities',
-    icon: '🌍',
     params: {
       populationSize: 200,
       maxGenerations: 200,
