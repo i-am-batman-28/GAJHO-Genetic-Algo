@@ -136,7 +136,6 @@ export function TSPLIBLoader({ onLoad }: TSPLIBLoaderProps) {
         className="load-dataset-btn"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="btn-icon">📁</span>
         Load TSPLIB Dataset
       </button>
 

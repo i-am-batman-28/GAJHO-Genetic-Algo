@@ -107,7 +107,7 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
   return (
     <div className="parameter-tuning">
       <div className="tuning-header">
-        <h3>🎛️ Parameter Tuning</h3>
+        <h3>Parameter Tuning</h3>
         <button 
           className="reset-btn"
           onClick={onReset}

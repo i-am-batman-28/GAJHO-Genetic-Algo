@@ -122,7 +122,7 @@ function App() {
                 {/* Empty state */}
                 {cities.length === 0 && (
                   <div className="empty-state">
-                    <div className="empty-icon">🗺️</div>
+                    {/* <div className="empty-icon">🗺️</div> */}
                     <h3>Start by Adding Cities</h3>
                     <p>Click anywhere on this canvas to place cities</p>
                     <p className="text-sm">Minimum 3 cities required</p>
@@ -171,7 +171,7 @@ function App() {
                   onClick={resetAlgorithm}
                   className="btn btn-danger btn-icon"
                 >
-                  <span className="btn-icon-text">🔄</span>
+                  {/* <span className="btn-icon-text">🔄</span> */}
                   <span>Reset</span>
                 </button>
                 
@@ -179,7 +179,7 @@ function App() {
                   onClick={clearCities}
                   className="btn btn-secondary btn-icon btn-full"
                 >
-                  <span className="btn-icon-text">🗑️</span>
+                  {/* <span className="btn-icon-text">🗑️</span> */}
                   <span>Clear All Cities</span>
                 </button>
                 
@@ -191,10 +191,8 @@ function App() {
                   onClick={() => setShowComparison(true)}
                   disabled={cities.length < 3}
                   className="btn btn-info btn-icon btn-full"
-                  style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)' }}
                 >
-                  <span className="btn-icon-text">⚔️</span>
-                  <span>Compare: Standard GA vs GA-JGHO</span>
+                  <span>Compare Algos</span>
                 </button>
               </div>
             </div>
