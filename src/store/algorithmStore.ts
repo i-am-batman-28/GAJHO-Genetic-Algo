@@ -19,6 +19,7 @@ interface AlgorithmStore {
   currentGeneration: number;
   currentPopulation: Population | null;
   history: GenerationStats[];
+  executionTime: number | null; // Execution time in milliseconds
   
   // Parameters
   params: AlgorithmParams;
@@ -52,6 +53,7 @@ export const useAlgorithmStore = create<AlgorithmStore>((set, get) => ({
   currentGeneration: 0,
   currentPopulation: null,
   history: [],
+  executionTime: null,
   params: DEFAULT_PARAMS,
   
   // City management
@@ -82,6 +84,7 @@ export const useAlgorithmStore = create<AlgorithmStore>((set, get) => ({
       algorithm: null,
       currentPopulation: null,
       history: [],
+      executionTime: null,
       isRunning: false,
       currentGeneration: 0
     });
@@ -95,6 +98,7 @@ export const useAlgorithmStore = create<AlgorithmStore>((set, get) => ({
       algorithm: null,
       currentPopulation: null,
       history: [],
+      executionTime: null,
       isRunning: false,
       currentGeneration: 0
     });
@@ -120,6 +124,7 @@ export const useAlgorithmStore = create<AlgorithmStore>((set, get) => ({
       currentPopulation: population,
       currentGeneration: 0,
       history: [stats],
+      executionTime: null,
       isRunning: false,
       isPaused: false
     });
@@ -132,6 +137,7 @@ export const useAlgorithmStore = create<AlgorithmStore>((set, get) => ({
       get().initializeAlgorithm();
     }
     
+    const startTime = performance.now();
     set({ isRunning: true, isPaused: false });
     
     // Run algorithm in animation loop
@@ -155,7 +161,11 @@ export const useAlgorithmStore = create<AlgorithmStore>((set, get) => ({
         // Continue to next generation
         requestAnimationFrame(runGeneration);
       } else {
-        set({ isRunning: false });
+        const endTime = performance.now();
+        set({ 
+          isRunning: false,
+          executionTime: endTime - startTime
+        });
       }
     };
     
@@ -178,6 +188,7 @@ export const useAlgorithmStore = create<AlgorithmStore>((set, get) => ({
       currentPopulation: null,
       currentGeneration: 0,
       history: [],
+      executionTime: null,
       isRunning: false,
       isPaused: false
     });
@@ -213,11 +224,13 @@ export const useAlgorithmStore = create<AlgorithmStore>((set, get) => ({
     }
     
     const history: GenerationStats[] = [];
+    const startTime = performance.now();
     
     algo.run((_population, stats) => {
       history.push(stats);
     });
     
+    const endTime = performance.now();
     const finalPopulation = algo.getPopulation();
     
     set({
@@ -225,6 +238,7 @@ export const useAlgorithmStore = create<AlgorithmStore>((set, get) => ({
       currentPopulation: finalPopulation,
       currentGeneration: finalPopulation.generation,
       history,
+      executionTime: endTime - startTime,
       isRunning: false
     });
   },

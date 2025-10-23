@@ -22,6 +22,7 @@ interface AlgorithmInfo {
   instance: any;
   history: GenerationStats[];
   enabled: boolean;
+  executionTime?: number; // Time taken in milliseconds
 }
 
 interface MultiAlgorithmComparisonProps {
@@ -138,6 +139,12 @@ export function MultiAlgorithmComparison({ cities, params, onClose }: MultiAlgor
     
     setIsRunning(true);
     
+    // Track start time for each algorithm
+    const startTimes: { [key: string]: number } = {};
+    enabledAlgos.forEach(algo => {
+      startTimes[algo.id] = performance.now();
+    });
+    
     for (let gen = 0; gen < params.maxGenerations; gen++) {
       // Run one generation for all enabled algorithms
       setAlgorithms(prev => prev.map(algo => {
@@ -155,6 +162,21 @@ export function MultiAlgorithmComparison({ cities, params, onClose }: MultiAlgor
       // Small delay for visualization
       await new Promise(resolve => setTimeout(resolve, 50));
     }
+    
+    // Calculate execution time for each algorithm (excluding visualization delays)
+    const totalDelayTime = params.maxGenerations * 50; // Total visualization delay
+    setAlgorithms(prev => prev.map(algo => {
+      if (!algo.enabled || !algo.instance) return algo;
+      
+      const endTime = performance.now();
+      const totalTime = endTime - startTimes[algo.id];
+      const actualExecutionTime = totalTime - totalDelayTime; // Remove visualization delays
+      
+      return {
+        ...algo,
+        executionTime: actualExecutionTime
+      };
+    }));
     
     setIsRunning(false);
   };
@@ -261,13 +283,16 @@ export function MultiAlgorithmComparison({ cities, params, onClose }: MultiAlgor
                   </div>
                   <div className="winner-score">
                     Best Distance: {winner.finalBest.toFixed(2)}
+                    {winner.executionTime !== undefined && (
+                      <span className="winner-time-inline"> • {winner.executionTime.toFixed(0)} ms</span>
+                    )}
                   </div>
                 </div>
               </div>
 
               {/* Rankings Table */}
               <div className="rankings-table">
-                <h3>📊 Final Rankings</h3>
+                <h3>Final Rankings</h3>
                 <table>
                   <thead>
                     <tr>
@@ -276,6 +301,7 @@ export function MultiAlgorithmComparison({ cities, params, onClose }: MultiAlgor
                       <th>Best Distance</th>
                       <th>Average</th>
                       <th>Diversity</th>
+                      <th>Execution Time</th>
                       <th>Status</th>
                     </tr>
                   </thead>
@@ -296,6 +322,11 @@ export function MultiAlgorithmComparison({ cities, params, onClose }: MultiAlgor
                           <td className="distance-cell">{final.bestDistance.toFixed(2)}</td>
                           <td>{final.averageDistance.toFixed(2)}</td>
                           <td>{(final.diversity * 100).toFixed(1)}%</td>
+                          <td className="time-cell">
+                            {algo.executionTime !== undefined 
+                              ? `${algo.executionTime.toFixed(0)} ms` 
+                              : 'N/A'}
+                          </td>
                           <td>
                             {idx === 0 && <span className="status-badge winner">Winner</span>}
                             {idx > 0 && (
@@ -313,7 +344,7 @@ export function MultiAlgorithmComparison({ cities, params, onClose }: MultiAlgor
 
               {/* Convergence Chart */}
               <div className="comparison-chart">
-                <h3>📈 Convergence Comparison</h3>
+                <h3>Convergence Comparison</h3>
                 <ResponsiveContainer width="100%" height={400}>
                   <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />

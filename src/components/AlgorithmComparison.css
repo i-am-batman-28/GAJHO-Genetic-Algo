@@ -215,6 +215,15 @@
   font-size: 1.25rem;
   color: #78350f;
   font-weight: 600;
+  white-space: nowrap;
+}
+
+.winner-time-inline {
+  display: inline;
+  font-size: 1rem;
+  color: #92400e;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 /* Rankings Table */
@@ -275,6 +284,13 @@
   font-weight: 700;
   font-size: 1.1rem;
   color: #1f2937;
+}
+
+.time-cell {
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #4b5563;
 }
 
 .status-badge {

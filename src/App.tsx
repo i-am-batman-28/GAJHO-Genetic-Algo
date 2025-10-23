@@ -14,6 +14,7 @@ function App() {
     isRunning,
     params,
     history,
+    executionTime,
     addCity,
     clearCities,
     loadCities,
@@ -37,6 +38,7 @@ function App() {
   const bestDistance = currentPopulation?.best.distance.toFixed(2) || 'N/A'
   const avgDistance = currentPopulation?.average.toFixed(2) || 'N/A'
   const diversity = currentPopulation?.diversity ? (currentPopulation.diversity * 100).toFixed(1) : 'N/A'
+  const execTime = executionTime !== null ? `${executionTime.toFixed(0)} ms` : 'N/A'
 
   return (
     <div className="app-container">
@@ -222,6 +224,10 @@ function App() {
                 <div className="stat-row">
                   <span className="stat-label">Diversity</span>
                   <span className="stat-value">{diversity}%</span>
+                </div>
+                <div className="stat-row">
+                  <span className="stat-label">Execution Time</span>
+                  <span className="stat-value">{execTime}</span>
                 </div>
               </div>
             </div>
