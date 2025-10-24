@@ -113,7 +113,7 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
           onClick={onReset}
           disabled={disabled}
         >
-          <span>🔄</span> Reset to Paper Defaults
+          <span></span> Reset to Paper Defaults
         </button>
       </div>
 
@@ -184,7 +184,7 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
                 className="slider"
               />
               <div className="param-info">
-                <span className="info-icon">💡</span>
+                <span className="info-icon"></span>
                 <span>Number of competing solutions. Larger = more diversity, slower convergence.</span>
               </div>
             </div>
@@ -206,7 +206,7 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
                 className="slider"
               />
               <div className="param-info">
-                <span className="info-icon">💡</span>
+                <span className="info-icon"></span>
                 <span>Number of evolution cycles. More generations = better solution, longer runtime.</span>
               </div>
             </div>
@@ -228,7 +228,7 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
                 className="slider"
               />
               <div className="param-info">
-                <span className="info-icon">💡</span>
+                <span className="info-icon"></span>
                 <span>Best solutions preserved unchanged. Prevents losing good solutions.</span>
               </div>
             </div>
@@ -254,7 +254,7 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
                 className="slider"
               />
               <div className="param-info">
-                <span className="info-icon">💡</span>
+                <span className="info-icon"></span>
                 <span>Selection probability at generation 0. Higher = more diverse selection initially.</span>
               </div>
             </div>
@@ -276,7 +276,7 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
                 className="slider"
               />
               <div className="param-info">
-                <span className="info-icon">💡</span>
+                <span className="info-icon"></span>
                 <span>Selection probability at final generation. Lower = more selective (only best).</span>
               </div>
             </div>
@@ -298,13 +298,13 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
                 className="slider"
               />
               <div className="param-info">
-                <span className="info-icon">💡</span>
+                <span className="info-icon"></span>
                 <span>Favoritism level for best solutions. Paper optimal: 0.292</span>
               </div>
             </div>
 
             <div className="formula-box">
-              <div className="formula-title">📐 Selection Formula:</div>
+              <div className="formula-title">Selection Formula:</div>
               <div className="formula">Pfit(t) = PfitMax - (PfitMax - PfitMin) × (t / Tmax)</div>
               <div className="formula-desc">Decreases linearly from {params.PfitMax.toFixed(2)} → {params.PfitMin.toFixed(4)} over {params.maxGenerations} generations</div>
             </div>
@@ -330,7 +330,7 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
                 className="slider"
               />
               <div className="param-info">
-                <span className="info-icon">💡</span>
+                <span className="info-icon"></span>
                 <span>Mutation type selector at generation 0. Higher = more swap mutations (exploration).</span>
               </div>
             </div>
@@ -352,13 +352,13 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
                 className="slider"
               />
               <div className="param-info">
-                <span className="info-icon">💡</span>
+                <span className="info-icon"></span>
                 <span>Mutation type selector at final generation. Lower = more heuristic mutations (exploitation).</span>
               </div>
             </div>
 
             <div className="formula-box">
-              <div className="formula-title">📐 Mutation Formula:</div>
+              <div className="formula-title">Mutation Formula:</div>
               <div className="formula">Ps(t) = PsMax - (PsMax - PsMin) × (t / Tmax)</div>
               <div className="formula-desc">
                 <div>• If Ps(t) &gt; 0.5: <strong>Swap Mutation</strong> (exploration)</div>
@@ -388,7 +388,7 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
                 className="slider"
               />
               <div className="param-info">
-                <span className="info-icon">💡</span>
+                <span className="info-icon"></span>
                 <span>Probability of applying jumping gene operator. Higher = more segment relocations, escapes local optima.</span>
               </div>
             </div>
@@ -410,13 +410,13 @@ export function ParameterTuning({ params, onParamsChange, onReset, disabled = fa
                 className="slider"
               />
               <div className="param-info">
-                <span className="info-icon">💡</span>
+                <span className="info-icon"></span>
                 <span>Length of gene segment to extract and relocate. Paper optimal: 19</span>
               </div>
             </div>
 
             <div className="formula-box">
-              <div className="formula-title">🧬 Jumping Gene Process:</div>
+              <div className="formula-title">Jumping Gene Process:</div>
               <div className="formula-desc">
                 <div>1. Generate binary mask of length q</div>
                 <div>2. Extract segment according to mask (e.g., positions marked '1')</div>

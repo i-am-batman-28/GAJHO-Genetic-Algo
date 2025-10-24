@@ -35,7 +35,7 @@ export function PerformanceCharts({ history }: PerformanceChartsProps) {
   return (
     <div className="charts-container">
       <div className="charts-header">
-        <h2>📈 Performance Analysis</h2>
+        <h2>Performance Analysis</h2>
         <div className="charts-stats">
           <div className="chart-stat">
             <span className="label">Total Generations:</span>
@@ -57,7 +57,7 @@ export function PerformanceCharts({ history }: PerformanceChartsProps) {
         {/* Distance Convergence Chart */}
         <div className="chart-card">
           <div className="chart-title">
-            <span className="chart-icon">🎯</span>
+            <span className="chart-icon"></span>
             <h3>Distance Convergence</h3>
           </div>
           <ResponsiveContainer width="100%" height={300}>
@@ -117,7 +117,7 @@ export function PerformanceCharts({ history }: PerformanceChartsProps) {
         {/* Diversity Chart */}
         <div className="chart-card">
           <div className="chart-title">
-            <span className="chart-icon">🧬</span>
+            <span className="chart-icon"></span>
             <h3>Population Diversity</h3>
           </div>
           <ResponsiveContainer width="100%" height={300}>

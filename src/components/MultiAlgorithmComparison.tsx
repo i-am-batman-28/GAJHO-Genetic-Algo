@@ -275,7 +275,7 @@ export function MultiAlgorithmComparison({ cities, params, onClose }: MultiAlgor
             <>
               {/* Winner Announcement */}
               <div className="winner-announcement">
-                <div className="trophy-icon">🏆</div>
+                <div className="trophy-icon"></div>
                 <div className="winner-text">
                   <div className="winner-label">Winner:</div>
                   <div className="winner-name" style={{ color: winner.color }}>
