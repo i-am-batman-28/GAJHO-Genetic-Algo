@@ -16,7 +16,7 @@ export function PerformanceCharts({ history }: PerformanceChartsProps) {
     return (
       <div className="charts-container">
         <div className="charts-empty">
-          <div className="empty-icon">📊</div>
+          <div className="empty-icon"></div>
           <p>Performance charts will appear here once the algorithm starts running</p>
         </div>
       </div>
